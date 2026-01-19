@@ -1,0 +1,232 @@
+@import "tailwindcss";
+
+/* Healthcare theme configuration */
+@theme {
+  /* Primary colors */
+  --color-primary-50: #e8f4fc;
+  --color-primary-100: #c5e4f9;
+  --color-primary-200: #9ed2f5;
+  --color-primary-300: #77bff1;
+  --color-primary-400: #50adef;
+  --color-primary-500: #2d5a87;
+  --color-primary-600: #1e3a5f;
+  --color-primary-700: #152d4a;
+  --color-primary-800: #0c1f35;
+  --color-primary-900: #031020;
+
+  /* Status colors */
+  --color-success: #2e7d32;
+  --color-warning: #f57c00;
+  --color-error: #c2185b;
+
+  /* HRV specific colors */
+  --color-hrv-low: #ef4444;
+  --color-hrv-normal: #22c55e;
+  --color-hrv-high: #3b82f6;
+}
+
+/* Healthcare-focused base styles */
+@layer base {
+  html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  body {
+    background-color: var(--color-gray-50);
+    color: var(--color-gray-900);
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  /* Ensure good contrast for accessibility */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--color-gray-800);
+  }
+
+  /* Large touch-friendly inputs */
+  input, select, textarea {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Remove default button styles for accessibility */
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Primary button - healthcare friendly (large touch target) */
+  .btn-primary {
+    height: 60px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    background-color: var(--color-primary-500);
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-600);
+  }
+
+  .btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--color-primary-500);
+  }
+
+  .btn-primary:disabled {
+    background-color: var(--color-gray-300);
+    cursor: not-allowed;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    height: 48px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-700);
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-gray-200);
+  }
+
+  .btn-secondary:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--color-gray-400);
+  }
+
+  /* Card component */
+  .card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    border: 1px solid var(--color-gray-100);
+    padding: 1.5rem;
+  }
+
+  /* Alert components */
+  .alert {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .alert-info {
+    background-color: var(--color-blue-50);
+    border: 1px solid var(--color-blue-200);
+    color: var(--color-blue-700);
+  }
+
+  .alert-success {
+    background-color: var(--color-green-50);
+    border: 1px solid var(--color-green-200);
+    color: var(--color-green-700);
+  }
+
+  .alert-warning {
+    background-color: var(--color-amber-50);
+    border: 1px solid var(--color-amber-200);
+    color: var(--color-amber-700);
+  }
+
+  .alert-error {
+    background-color: var(--color-red-50);
+    border: 1px solid var(--color-red-200);
+    color: var(--color-red-700);
+  }
+
+  /* Input field */
+  .input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.125rem;
+    border: 2px solid var(--color-gray-300);
+    border-radius: 0.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .input:focus {
+    border-color: var(--color-primary-500);
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(45 90 135 / 0.2);
+  }
+
+  /* HRV status badges */
+  .hrv-badge-low {
+    background-color: var(--color-red-50);
+    border-color: var(--color-red-400);
+    color: var(--color-red-600);
+  }
+
+  .hrv-badge-normal {
+    background-color: var(--color-green-50);
+    border-color: var(--color-green-400);
+    color: var(--color-green-600);
+  }
+
+  .hrv-badge-high {
+    background-color: var(--color-blue-50);
+    border-color: var(--color-blue-400);
+    color: var(--color-blue-600);
+  }
+}
+
+/* Custom scrollbar for healthcare feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animations */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 2s ease-in-out infinite;
+}
