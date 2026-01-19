@@ -118,8 +118,7 @@ export function SessionPage() {
         onDismiss={dismissStressAlert}
       />
 
-      {/* Debug Panel - only visible in development */}
-      {import.meta.env.DEV && <HRVDebugPanel />}
+      <HRVDebugPanel />
     </div>
   );
 }
